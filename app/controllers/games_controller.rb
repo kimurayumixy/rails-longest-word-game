@@ -11,7 +11,7 @@ class GamesController < ApplicationController
     url = "https://wagon-dictionary.herokuapp.com/#{@answer}"
     hash = JSON.parse(URI.open(url).read)
     grid_arr = params["letters"].split(" ")
-    answer_arr = params["answer"].split("")
+    answer_arr = @answer.split("")
     included = answer_arr.all? { |answer_letter| answer_arr.count(answer_letter) <= grid_arr.count(answer_letter) }
     if hash["found"] && included
       @result = "congrats"
