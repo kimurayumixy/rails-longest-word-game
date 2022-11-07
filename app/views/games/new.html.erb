@@ -1,0 +1,19 @@
+<h1> Welcome to the longest word-game! </h1>
+<p>What is the longest word you can find?</p>
+
+<ul>
+  <% @letters.each do |alphabet| %>
+  <li><%= alphabet %></li>
+  <% end %>
+</ul>
+
+<form action="/score" method="post" data-turbo="false">
+  <!-- ... -->
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters %>
+
+  <input type="text"
+  name="answer"
+  value="<%= params[:answer] %>">
+  <input type="submit">
+</form>
